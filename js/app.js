@@ -9,13 +9,18 @@ window.addEventListener("load", function() {
       e.preventDefault();
 
       activarCampo();
-      moverCampo()
+
+
+      if(activarCampo()){
+        boton.style.marginLeft = "20%";
+      }
 
   });
 
       function activarCampo(){
           contenedor.style.display = "block";
           return true;
+
     }
 
   retornar.addEventListener("click", function(e) {
@@ -33,6 +38,11 @@ window.addEventListener("load", function() {
   guardar.addEventListener("click", function() {
      var texto = textArea.value;
      agregarMensaje(texto);
+     textArea.style.display ="none";
+     guardar.style.display ="none";
+     retornar.style.display ="none";
+
+
 
   });
 
