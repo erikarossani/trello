@@ -84,12 +84,12 @@ form{
     margin-top: 10px;
     box-sizing: border-box;
     word-wrap: break-word;
+    font-weight:bold;
 }
 .texto{
     background: white;
     padding-right: 50%;
     opacity: 0.5;
     filter: alpha(opacity=50);
-
 
 }
