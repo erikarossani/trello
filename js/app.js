@@ -1,61 +1,98 @@
 window.addEventListener("load", function() {
-	var boton = document.getElementById("trello1");
-  var textArea = document.getElementById("texto");
-  var guardar = document.getElementById("resultado");
-  var contenedor = document.getElementById("tema");
-  var retornar = document.getElementById("retornar");
+      var boton = document.getElementById("trello1");
+      var textArea = document.getElementById("texto");
+      var guardar = document.getElementById("resultado");
+      var contenedor = document.getElementById("tema");
+      var retornar = document.getElementById("retornar");
+      var btn1 = document.getElementsByTagName("button");
+      var principal = document.getElementById("principal");
+      var content= document.getElementById("content");
+      var parrafo= document.getElementById("parrafo");
 
-	boton.addEventListener("click", function(e) {
-      e.preventDefault();
+boton.addEventListener("click", function(e) {
+	 var focus = document.getElementById("texto").focus();
+	 e.preventDefault();
 
-      activarCampo();
+	 activarCampo();
 
+	 boton.style.display ="none";
 
-      if(activarCampo()){
-        boton.style.marginLeft = "20%";
-      }
+});
 
-  });
+	 function activarCampo(){
+	     contenedor.style.display = "block";
 
-      function activarCampo(){
-          contenedor.style.display = "block";
-          return true;
-
-    }
-
-  retornar.addEventListener("click", function(e) {
-      e.preventDefault();
-
-      retornarCampo()
-
-  });
-
-      function retornarCampo(){
-          contenedor.style.display = "none";
-          return true;
-    }
-
-  guardar.addEventListener("click", function() {
-     var texto = textArea.value;
-     agregarMensaje(texto);
-     textArea.style.display ="none";
-     guardar.style.display ="none";
-     retornar.style.display ="none";
+	}
 
 
+retornar.addEventListener("click", function(e) {
+	 e.preventDefault();
 
-  });
+	 retornarCampo()
 
-    function agregarMensaje(texto){
-       var nuevoItem = document.createElement("div");
-       var btn = document.createElement("button");
-       nuevoItem.innerHTML =texto;
-       btn.textContent = "Añadir una tarjeta";
-       btn.classList.add("texto");
+	 boton.style.display ="block";
 
-       var lista = document.getElementById("tarjeta");
-       lista.insertBefore(btn, tarjeta.childNodes[0]);
-       lista.insertBefore(nuevoItem, tarjeta.childNodes[0]);
-       document.getElementById("texto").value = "";
-    }
+	 if (contenedor.style.display = "none") {
+		boton.style.marginLeft = "0";
+	 }
+});
+
+	function retornarCampo(){
+	     contenedor.style.display = "none";
+	}
+
+
+guardar.addEventListener("click", function() {
+	 var texto = textArea.value;
+	 agregarMensaje(texto, this);
+	 contenedor.style.display = "none";
+	 boton.style.display ="block";
+
+	 moverTarjeta();
+
+});
+
+	 function agregarMensaje(texto, boton){
+	     var nuevoItem = document.createElement("div");
+	     var btn = document.createElement("button");
+	     nuevoItem.innerHTML =texto;
+	     btn.textContent = "Añadir una tarjeta";
+	     btn.classList.add("texto");
+
+     btn.addEventListener("click", function(){
+
+		mostrarCampo();
+
+	   });
+
+	   var lista = boton.parentElement.parentElement;
+	   lista.insertBefore(btn, lista.childNodes[0]);
+	   lista.insertBefore(nuevoItem, lista.childNodes[0]);
+	   document.getElementById("texto").value = "";
+	}
+
+	function mostrarCampo(){
+            
+        var item = document.createElement("textarea");
+        var btn1 = document.createElement("button");
+        btn1.textContent = "Añadir";
+        btn1.classList.add("texto");
+
+        var lista1 = document.getElementById("secundario");
+        lista1.insertBefore(btn1, secundario.childNodes[1]);
+        lista1.insertBefore(item, secundario.childNodes[1]);
+        document.getElementById("texto").value = "";
+
+     }
+
+	 function moverTarjeta(){
+	      var padre =guardar.parentElement.parentElement;
+	      var mover = document.createElement("div");
+	      principal.appendChild(mover);
+	      mover.appendChild(boton);
+	      mover.appendChild(contenedor);
+	      mover.classList.add("mover");
+	}
+
+
 });
