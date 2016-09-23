@@ -10,10 +10,10 @@ window.addEventListener("load", function() {
       var parrafo= document.getElementById("parrafo");
 
 boton.addEventListener("click", function(e) {
-	 var focus = document.getElementById("texto").focus();
 	 e.preventDefault();
       activarCampo();
       boton.style.display ="none";
+      textArea.focus();
 });
 
 retornar.addEventListener("click", function(e) {
