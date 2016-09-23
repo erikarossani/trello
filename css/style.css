@@ -100,6 +100,7 @@ form{
 }
 
 .mover{
+    float: left;
     display: inline-block;
     margin-left: 5px;
 }
