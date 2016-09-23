@@ -4,7 +4,7 @@
 }
 
 body{
-     background-image: url("../img/fondo.jpg");
+     background-image: url("../img/fondo.png");
      background-size: 100vw 100vh;
      background-attachment: fixed;
 }
@@ -15,13 +15,10 @@ body{
      opacity: 0.5;
      filter: alpha(opacity=50);
      color: rgb(220,220,220);
-     padding-right: 10%;
-     padding-top: .3%;
-     padding-bottom: .3%;
+     padding: 6px 35px;
      font-size: 1em;
-     position: absolute;
-     top: 20%;
-     left: 4%;
+     margin-top: 120px;
+     margin-left: 10%;
 }
 
 #trello1:hover{
@@ -32,19 +29,20 @@ body{
 }
 
 form{
-     width: 50%;
+     width: 70%;
      margin: auto;
      padding: 10px 20px;
      box-sizing: border-box;
      margin-top: 130px;
      margin-left: 3%;
      border-radius: 7px;
-     background: #483D8B;
+     background: #191970;
      display:none;
 }
 
+
 #retornar{
-    background: #483D8B;
+    background: #191970;
     opacity: 0.5;
     filter: alpha(opacity=50);
     color: rgb(220,220,220);
@@ -53,7 +51,7 @@ form{
 }
 
 #retornar:hover{
-    color: rgb(25,25,112);
+    color:  #B0E0E6;
     opacity: 1.0;
     filter: alpha(opacity=100); 
     font-size: 2em;
@@ -78,26 +76,32 @@ form{
      max-height: 200px;
      max-width: 100%;
 }
+.div{
+    width: 250px;
+    border:5px solid #191970;
+    border-bottom: 30px solid #191970;
+    background: white;
+    margin: auto;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    margin-top: 130px;
+    margin-left: 3%;
+}
+
+#texto{
+     width: 100%;
+     margin-bottom: 20px;
+     padding: 7px;
+     box-sizing: border-box;
+     font-size: 17px;
+     min-height: 6px;
+     max-height: 200px;
+     max-width: 100%;
+}
 
 .mover{
-    margin-left: 20%;
     display: inline-block;
-}
-#tarjeta{
-    background: white;
-    width: 18%;
-    margin-top: 9.5%;
-    margin-left: 30px;
-
-}
-.texto{
-    background: white;
-    opacity: 0.5;
-    filter: alpha(opacity=50);
-
-}
-.mover{
-    display: inline-block;
+    margin-left: 5px;
 }
 
 #principal{
@@ -106,3 +110,40 @@ form{
 #secundario{
     display: inline-block;
 }
+.texto{
+    background: white;
+    width: 240px;
+    margin-left: 5%;
+    position: relative;
+    padding: 5px 20px;
+    top: -38px;
+    box-sizing: border-box;
+
+}
+.item{
+    display: block;
+    width: 250px;
+    margin-left: 3%;
+    position: relative;
+    padding: 5px 20px;
+    top: -25px;
+    box-sizing: border-box;
+    min-height: 20px;
+    max-height: 160px; 
+    max-width: 100%;
+    overflow: hidden;
+    border:5px solid #191970;
+    border-bottom: 30px solid #191970;
+}
+
+.Añadir{
+    display: block;
+    position: relative;
+    padding: 5px 20px;
+    top: -55px;
+    background: white;
+    width: 240px;
+    margin-left: 5%;
+
+}
+

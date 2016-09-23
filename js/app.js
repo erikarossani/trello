@@ -12,24 +12,13 @@ window.addEventListener("load", function() {
 boton.addEventListener("click", function(e) {
 	 var focus = document.getElementById("texto").focus();
 	 e.preventDefault();
-
-	 activarCampo();
-
-	 boton.style.display ="none";
-
+      activarCampo();
+      boton.style.display ="none";
 });
-
-	 function activarCampo(){
-	     contenedor.style.display = "block";
-
-	}
-
 
 retornar.addEventListener("click", function(e) {
 	 e.preventDefault();
-
 	 retornarCampo()
-
 	 boton.style.display ="block";
 
 	 if (contenedor.style.display = "none") {
@@ -37,27 +26,41 @@ retornar.addEventListener("click", function(e) {
 	 }
 });
 
-	function retornarCampo(){
-	     contenedor.style.display = "none";
-	}
-
-
 guardar.addEventListener("click", function() {
 	 var texto = textArea.value;
 	 agregarMensaje(texto, this);
 	 contenedor.style.display = "none";
 	 boton.style.display ="block";
+      moverTarjeta();
 
-	 moverTarjeta();
 
 });
 
-	 function agregarMensaje(texto, boton){
+	function activarCampo(){
+	     contenedor.style.display = "block";
+	}
+
+	function retornarCampo(){
+	   contenedor.style.display = "none";
+	}
+
+
+	function moverTarjeta(){
+	      var padre =guardar.parentElement.parentElement;
+	      var mover = document.createElement("div");
+	      principal.appendChild(mover);
+	      mover.appendChild(boton);
+	      mover.appendChild(contenedor);
+	      mover.classList.add("mover");
+	}
+
+	function agregarMensaje(texto, boton){
 	     var nuevoItem = document.createElement("div");
 	     var btn = document.createElement("button");
 	     nuevoItem.innerHTML =texto;
 	     btn.textContent = "Añadir una tarjeta";
 	     btn.classList.add("texto");
+	     nuevoItem.classList.add("div")
 
      btn.addEventListener("click", function(){
 
@@ -76,7 +79,8 @@ guardar.addEventListener("click", function() {
         var item = document.createElement("textarea");
         var btn1 = document.createElement("button");
         btn1.textContent = "Añadir";
-        btn1.classList.add("texto");
+        btn1.classList.add("Añadir");
+        item.classList.add("item");
 
         var lista1 = document.getElementById("secundario");
         lista1.insertBefore(btn1, secundario.childNodes[1]);
@@ -84,15 +88,5 @@ guardar.addEventListener("click", function() {
         document.getElementById("texto").value = "";
 
      }
-
-	 function moverTarjeta(){
-	      var padre =guardar.parentElement.parentElement;
-	      var mover = document.createElement("div");
-	      principal.appendChild(mover);
-	      mover.appendChild(boton);
-	      mover.appendChild(contenedor);
-	      mover.classList.add("mover");
-	}
-
 
 });
