@@ -4,10 +4,6 @@ window.addEventListener("load", function() {
       var guardar = document.getElementById("resultado");
       var contenedor = document.getElementById("tema");
       var retornar = document.getElementById("retornar");
-      var btn1 = document.getElementsByTagName("button");
-      var principal = document.getElementById("principal");
-      var content= document.getElementById("content");
-      var parrafo= document.getElementById("parrafo");
 
 boton.addEventListener("click", function(e) {
 	 e.preventDefault();
@@ -31,9 +27,7 @@ guardar.addEventListener("click", function() {
 	 agregarMensaje(texto, this);
 	 contenedor.style.display = "none";
 	 boton.style.display ="block";
-      moverTarjeta();
-
-
+     moverTarjeta();
 });
 
 	function activarCampo(){
@@ -88,5 +82,4 @@ guardar.addEventListener("click", function() {
         document.getElementById("texto").value = "";
 
      }
-
 });
