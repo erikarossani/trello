@@ -5,6 +5,7 @@ window.addEventListener("load", function() {
 	var formulario = document.getElementById("formulario");
 	var inputLista = document.getElementById("inputLista");
 	var guardar = document.getElementById("guardar");
+	var contador =1;
 
 	anadirLista.addEventListener("click", function(e){
 		e.preventDefault();
@@ -14,21 +15,14 @@ window.addEventListener("load", function() {
   		lista.classList.add("lsta");
 	});
 
-    retornar.addEventListener("click", function(e) {
-	     e.preventDefault();
-	     retornarCampo()
-	     anadirLista.style.display ="block";
-
-	     if (formulario.style.display = "none") {
-		     anadirLista.style.marginLeft = "10";
-	         }
-        });
-
 	guardar.addEventListener("click", function(){
 		formulario.style.display = "none";
 		agregarMensaje(inputLista, this);
 		insertarContenedor();
 		inputLista.value = "";
+		lista.addEventListener("drop", soltar);
+		lista.addEventListener("dragover", arrastrarSobre);
+		lista.addEventListener("dragleave", dejaArrastrar);
 	});
 
 	function activarCampo(){
@@ -55,10 +49,6 @@ window.addEventListener("load", function() {
 		});
 	}
 
-	function retornarCampo(){
-	   formulario.style.display = "none";
-	}
-
 	function insertarContenedor(){
 		var nuevoCampo = document.createElement("div");
 		subcontenedor.appendChild(nuevoCampo);
@@ -70,7 +60,13 @@ window.addEventListener("load", function() {
 		nuevoCampo.classList.add("lsta");
 
 		anadirLista.style.display = "block";
+
+		nuevoCampo.addEventListener("drop", soltar);
+		nuevoCampo.addEventListener("dragover", arrastrarSobre);
+		nuevoCampo.addEventListener("dragleave", dejaArrastrar);
+
 	}
+
 	function anadirTarjeta(padre){
 		var card = document.createElement("form");
 		var textArea = document.createElement("textarea");
@@ -101,7 +97,42 @@ window.addEventListener("load", function() {
 		padre.insertBefore(campoTarjeta, padre.lastChild);
 
 		campoTarjeta.classList.add("tarjeta1");
+		campoTarjeta.setAttribute("id", "card.1"+contador);
+		campoTarjeta.setAttribute("draggable","true");
 		padre.appendChild(campoTarjeta.previousSibling);
 		padre.lastChild.style.display = "block";
+
+		campoTarjeta.addEventListener("dragstart", arrastrar);
+		campoTarjeta.addEventListener("dragend", terminaArrastrar);
+		contador++;
+
 	}
+
+
+    function arrastrar(e) {
+	    e.dataTransfer.setData("text", this.id);
+	    this.style.opacity = "0.4";
+    }
+
+    function arrastrarSobre(e) {
+	    e.preventDefault();
+	    this.style.backgroundColor = "#FF00FF";
+    }
+
+    function soltar(e) {
+	    var idArrastrado = e.dataTransfer.getData("text");
+	    var elementoArrastrado = document.getElementById(idArrastrado);
+	    var temporal = this.innerHTML;
+	    this.insertBefore(elementoArrastrado, this.childNodes[1])
+	    this.style.backgroundColor = "#E2E4E6";
+    }
+
+    function terminaArrastrar(e) {
+	    this.style.opacity = null;
+    }
+
+    function dejaArrastrar(e) {
+	   this.style.backgroundColor = "#E2E4E6";
+    }
+
 });
